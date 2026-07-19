@@ -354,12 +354,99 @@ function generatePDF() {
   doc.x = 50;
 
   // ==========================================
-  // PAGE 5: CHALLENGES, CREDENTIALS & IMPROVEMENTS
+  // PAGE 5: APPLICATION UI WIREFRAMES & LAYOUTS
   // ==========================================
   doc.addPage();
   doc.y = 50;
 
-  drawSectionHeader('4. Challenges, Future Improvements & Credentials', 'Review notes and environment setup credentials');
+  drawSectionHeader('4. Application Interface & Layout Wireframes', 'Mock diagrams of VibeFlow responsive dashboards');
+
+  doc.fillColor(TEXT_DARK)
+     .font('Helvetica-Bold')
+     .fontSize(11)
+     .text('SaaS Interface Responsive Shell Layout')
+     .moveDown(0.3);
+
+  const shellY = doc.y;
+  doc.rect(50, shellY, 495, 120)
+     .fill(BG_LIGHT)
+     .strokeColor('#cbd5e1')
+     .lineWidth(1)
+     .stroke();
+
+  // Sidebar Mock Box
+  doc.rect(55, shellY + 5, 100, 110)
+     .fill('#e2e8f0')
+     .strokeColor('#94a3b8')
+     .stroke();
+  doc.fillColor(TEXT_DARK).font('Helvetica-Bold').fontSize(7.5).text('SIDEBAR NAVIGATION', 60, shellY + 15);
+  doc.font('Helvetica').fontSize(6.5).fillColor(TEXT_LIGHT)
+     .text('• VibeFlow Logo', 60, shellY + 30)
+     .text('• User Avatar Details', 60, shellY + 45)
+     .text('• My Dashboard Link', 60, shellY + 60)
+     .text('• Profile Settings Link', 60, shellY + 75)
+     .text('• Sign Out Button', 60, shellY + 90);
+
+  // Navbar Mock Box
+  doc.rect(160, shellY + 5, 380, 20)
+     .fill('#f1f5f9')
+     .strokeColor('#cbd5e1')
+     .stroke();
+  doc.fillColor(TEXT_DARK).font('Helvetica-Bold').fontSize(8).text('NAVBAR (Hamburger Trigger, Page Title, Status Indicators)', 170, shellY + 12);
+
+  // Content Area Mock Box
+  doc.rect(160, shellY + 30, 380, 85)
+     .fill('#ffffff')
+     .strokeColor('#cbd5e1')
+     .stroke();
+  doc.fillColor(TEXT_DARK).font('Helvetica-Bold').fontSize(8).text('MAIN CONTENT WORKSPACE PANEL', 170, shellY + 40);
+  doc.font('Helvetica').fontSize(7).fillColor(TEXT_LIGHT)
+     .text('• Dashboard Headers & Primary CTA Actions (Create Request / Export CSV)', 170, shellY + 52)
+     .text('• Search and Category / Status / Priority Filter Form Groups', 170, shellY + 64)
+     .text('• Tabular Requests Data List / Stats Cards Row Grid / Confirmation Modals', 170, shellY + 76);
+
+  doc.x = 50;
+  doc.moveDown(7.5);
+  drawDivider(doc.y);
+  doc.moveDown(0.8);
+
+  doc.fillColor(TEXT_DARK)
+     .font('Helvetica-Bold')
+     .fontSize(11)
+     .text('Timeline Audit Log Visual Wireframe')
+     .moveDown(0.3);
+
+  doc.font('Helvetica')
+     .fontSize(9.5)
+     .text('Visual representation of the status tracking history timeline rendered in client view panels:', { align: 'justify' })
+     .moveDown(0.4);
+
+  const timelineY = doc.y;
+  doc.rect(50, timelineY, 495, 75)
+     .fill(BG_LIGHT)
+     .strokeColor('#cbd5e1')
+     .lineWidth(1)
+     .stroke();
+
+  // Draw timeline visual elements
+  doc.circle(70, timelineY + 20, 4).fill(PRIMARY);
+  doc.lineWidth(1.5).strokeColor(PRIMARY).moveTo(70, timelineY + 24).lineTo(70, timelineY + 50).stroke();
+  doc.circle(70, timelineY + 54, 4).fill(ACCENT);
+
+  doc.fillColor(TEXT_DARK).font('Helvetica-Bold').fontSize(8.5).text('Request Submitted', 85, timelineY + 16)
+     .font('Helvetica').fontSize(8).fillColor(TEXT_LIGHT).text('Timestamp logged automatically on postgres created_at insert.', 85, timelineY + 27)
+     .fillColor(TEXT_DARK).font('Helvetica-Bold').text('Request Approved / Rejected', 85, timelineY + 50)
+     .font('Helvetica').fontSize(8).fillColor(TEXT_LIGHT).text('Updated on status change, rendering manager justification comments.', 85, timelineY + 61);
+
+  doc.x = 50;
+
+  // ==========================================
+  // PAGE 6: CHALLENGES, CREDENTIALS & IMPROVEMENTS
+  // ==========================================
+  doc.addPage();
+  doc.y = 50;
+
+  drawSectionHeader('5. Challenges, Future Improvements & Credentials', 'Review notes and environment setup credentials');
 
   doc.fillColor(TEXT_DARK)
      .font('Helvetica-Bold')

@@ -1,0 +1,391 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' 
+      xmlns:w='urn:schemas-microsoft-com:office:word' 
+      xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<title>VibeFlow Presentation Document</title>
+<!--[if gte mso 9]>
+<xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>100</w:Zoom>
+  <w:DoNotOptimizeForBrowser/>
+ </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page {
+    size: 8.5in 11in;
+    margin: 1in;
+  }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.5;
+  }
+  .page {
+    page-break-after: always;
+  }
+  .cover-page {
+    text-align: center;
+    padding-top: 2in;
+    page-break-after: always;
+  }
+  h1 {
+    font-size: 28pt;
+    color: #4f46e5;
+    margin-bottom: 5pt;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 16pt;
+    color: #0f172a;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 5pt;
+    margin-top: 20pt;
+    margin-bottom: 10pt;
+  }
+  h3 {
+    font-size: 12pt;
+    color: #4f46e5;
+    margin-top: 15pt;
+    margin-bottom: 5pt;
+  }
+  p {
+    font-size: 10.5pt;
+    margin-bottom: 10pt;
+  }
+  ul {
+    margin-bottom: 10pt;
+    padding-left: 20pt;
+  }
+  li {
+    font-size: 10pt;
+    margin-bottom: 4pt;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+  }
+  th {
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    padding: 8pt;
+    font-size: 9.5pt;
+    font-weight: bold;
+    text-align: left;
+  }
+  td {
+    border: 1px solid #cbd5e1;
+    padding: 8pt;
+    font-size: 9.5pt;
+  }
+  .meta-box {
+    margin: 40pt auto;
+    padding: 15pt;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    width: 80%;
+    text-align: left;
+  }
+  .meta-row {
+    margin-bottom: 8pt;
+    font-size: 10pt;
+  }
+  .meta-label {
+    font-weight: bold;
+    color: #475569;
+    display: inline-block;
+    width: 120pt;
+  }
+  .code-block {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10pt;
+    font-size: 9pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    white-space: pre;
+  }
+</style>
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- PAGE 1: COVER -->
+  <!-- ========================================== -->
+  <div class="cover-page">
+    <h1>VibeFlow</h1>
+    <p style="font-size: 14pt; color: #4f46e5; font-weight: bold; margin-top: 5pt; margin-bottom: 30pt;">
+      Employee Request Approval System
+    </p>
+    <div style="width: 80pt; height: 3pt; background-color: #10b981; margin: 0 auto 40pt auto;"></div>
+    
+    <div class="meta-box">
+      <div class="meta-row"><span class="meta-label">Project Name:</span><span>VibeFlow Approval System</span></div>
+      <div class="meta-row"><span class="meta-label">Assessment:</span><span>Vibe Coder / Rapid Prototyper Suite</span></div>
+      <div class="meta-row"><span class="meta-label">Tech Stack:</span><span>Next.js 15, TypeScript, Tailwind CSS, Supabase, Vercel</span></div>
+      <div class="meta-row"><span class="meta-label">Developer:</span><span>Antigravity AI Engineer (Google DeepMind)</span></div>
+      <div class="meta-row"><span class="meta-label">Date:</span><span>July 2026</span></div>
+      <div class="meta-row"><span class="meta-label">Status:</span><span style="color: #10b981; font-weight: bold;">Production-Ready & Fully Deployed</span></div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 2: PROBLEM STATEMENT -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>1. Problem Statement</h2>
+    <p>In modern high-speed businesses, operational delay in reviewing and approving internal request folders—such as annual leaves, equipment procurement, software licenses, budget allocations, and travel arrangements—causes significant organizational friction. Common bottlenecks include:</p>
+    
+    <h3>Friction and Delays</h3>
+    <p>Relying on legacy channels like email threads or spreadsheets often leads to misplaced files, double-bookings, and untracked communication logs.</p>
+    
+    <h3>Information Asymmetry</h3>
+    <p>Employees have no centralized panel to view request progress, track audit histories, or review feedback justification comments from reviewers.</p>
+    
+    <h3>Data Security Vulnerabilities</h3>
+    <p>Without secure database authorization, sensitive personnel details (like salary budgets or medical leave reasons) are exposed to unauthorized viewing.</p>
+    
+    <h3>Reporting Deficiencies</h3>
+    <p>Managers lack analytical overview metrics and search filters to quickly analyze request volumes or export tabular reports for audits.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 3: SOLUTION OVERVIEW -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>2. Solution Overview</h2>
+    <p>VibeFlow addresses these challenges with a centralized SaaS platform featuring distinct role-based views, strict form validation, storage integration, and real-time dashboard syncs.</p>
+    
+    <h3>Unified Request Lifecycle</h3>
+    <ul>
+      <li><strong>Employee Submissions:</strong> Employees compile requests choosing specific categories and priorities, attach supporting documentation, and submit. The item is logged as "Pending".</li>
+      <li><strong>Manager Notification:</strong> The record instantly appears in the Manager's dashboard queue.</li>
+      <li><strong>Evaluation:</strong> Managers review details, download attachments, select "Approve" or "Reject", add comments, and submit.</li>
+      <li><strong>Websocket Sync:</strong> Real-time subscriptions push the status update to the employee's screen instantly without requiring page reloads.</li>
+    </ul>
+
+    <h3>Core Advantages</h3>
+    <ul>
+      <li><strong>Enforced Verification:</strong> Form fields validate dynamically using Zod before submissions.</li>
+      <li><strong>Secured Access:</strong> Supabase Row Level Security (RLS) restricts access so users only see authorized data rows.</li>
+      <li><strong>Exportable Audits:</strong> Managers can instantly export the filtered queue into clean CSV sheets.</li>
+    </ul>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 4: TECH STACK -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>3. Technology Stack</h2>
+    <p>The application is engineered using a robust, modern, single-language stack optimized for speed, scalability, and ease of deployment:</p>
+    
+    <h3>Next.js 15 (App Router)</h3>
+    <p>Utilized for type-safe routing layouts, React Server Components (RSC) to reduce client load, and Server Actions to securely process database mutations.</p>
+    
+    <h3>TypeScript</h3>
+    <p>Provides strict static compilation checking across database queries, Zod validation schemas, and client components.</p>
+    
+    <h3>Tailwind CSS v4</h3>
+    <p>Powers responsive layout design tokens, custom color schemes, glassmorphic containers, and transition animations.</p>
+    
+    <h3>Supabase (Backend-as-a-Service)</h3>
+    <ul>
+      <li><strong>PostgreSQL Database:</strong> Hosts relational schemas and handles automated profiles syncing via trigger functions.</li>
+      <li><strong>Supabase Auth:</strong> Manages secure email/password credential sessions.</li>
+      <li><strong>Storage Buckets:</strong> Holds file attachments with bucket-level security.</li>
+      <li><strong>Real-time Engines:</strong> Broadcasters database mutations via websockets.</li>
+    </ul>
+
+    <h3>Vercel</h3>
+    <p>Edge hosting platform synced to GitHub pipelines for automated builds and deployment.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 5: SYSTEM ARCHITECTURE -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>4. System Architecture</h2>
+    <p>VibeFlow implements a clean, decoupled architectural flow ensuring proper separation of concerns:</p>
+    
+    <div class="code-block">
+  [Browser Client Component Views] 
+           │
+           ▼ (Zod Client Form Validation)
+  [Supabase Storage Bucket API] <── (Optional Files Upload Direct)
+           │
+           ▼ (Invoke Async Server Actions / API Handlers)
+  [Next.js Server-Side Context] (await cookies / auth.getUser)
+           │
+           ▼ (Enforce PostgreSQL Row Level Security Rules)
+  [Supabase DB / Profiles & Requests Tables] ──┐
+           ▲                                   │ (Trigger DB Event)
+           │                                   ▼
+  [Websocket Real-time Subscription] ◄─────────┘
+    </div>
+
+    <h3>Architectural Highlights</h3>
+    <ul>
+      <li><strong>Client Validation:</strong> Intercepts invalid inputs before triggering server requests.</li>
+      <li><strong>Direct Storage Uploads:</strong> Clients upload files directly to Supabase storage to bypass server buffering, saving the resulting URL.</li>
+      <li><strong>Token Refreshing Middleware:</strong> Intercepts page requests to refresh auth sessions and enforce dashboard path protection.</li>
+    </ul>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 6: DATABASE DESIGN -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>5. Database Design & Schemas</h2>
+    <p>The database schema resides under the `public` schema of PostgreSQL, consisting of two primary tables with a one-to-many relationship:</p>
+    
+    <div class="code-block">
+  [Profiles Table]
+  - id (UUID, Primary Key, references auth.users)
+  - full_name (TEXT, not null)
+  - email (TEXT, not null)
+  - role (TEXT, check constraint: 'employee' | 'manager')
+  - created_at (TIMESTAMPTZ)
+         │
+         └─── (1-to-Many Relationship) ───┐
+                                          ▼
+                                   [Requests Table]
+                                   - id (UUID, PK)
+                                   - employee_id (UUID, FK -> profiles.id)
+                                   - title / description (TEXT)
+                                   - category / priority (TEXT)
+                                   - start_date / end_date (DATE)
+                                   - attachment_url (TEXT, nullable)
+                                   - status (TEXT, default 'Pending')
+                                   - manager_comment (TEXT, nullable)
+                                   - created_at / updated_at (TIMESTAMPTZ)
+    </div>
+
+    <h3>Automated Profile Triggers</h3>
+    <p>An Auth Trigger function `handle_new_user()` listens to inserts in `auth.users` (created during signUp) and automatically mirrors the new user's metadata (full name and role) into `public.profiles` instantly.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 7: SYSTEM FEATURES -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>6. Application Features</h2>
+    
+    <h3>Employee Operations Portal</h3>
+    <ul>
+      <li><strong>Create Requests:</strong> Validated forms with date-range checks and files upload support.</li>
+      <li><strong>Edit Pending:</strong> Modify title, description, category, priority, or replace attachment files for any requests still marked as "Pending".</li>
+      <li><strong>Delete Pending:</strong> Remove a pending request completely.</li>
+      <li><strong>Timeline Tracking:</strong> Interactive history trail detailing approval updates and manager feedback.</li>
+    </ul>
+
+    <h3>Manager Control Center</h3>
+    <ul>
+      <li><strong>Queue Overview:</strong> High-level metrics showing Total, Pending, Approved, and Rejected counts.</li>
+      <li><strong>Filters Panel:</strong> Inline queries, category dropdowns, and status indicators.</li>
+      <li><strong>Decision Modals:</strong> Single-click Approve/Reject panels requiring review comments.</li>
+      <li><strong>CSV Generation:</strong> Generates formatted CSV sheets of the currently filtered dataset.</li>
+      <li><strong>Interactive Sorting:</strong> Toggle-sort rows by employee name, category, priority, and date.</li>
+    </ul>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 8: APPLICATION INTERFACE WIREFRAMES -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>7. User Interface Mockups & Layouts</h2>
+    <p>Below are structural wireframe mockups representing the application's core views:</p>
+    
+    <h3>Responsive Dashboard Shell Layout</h3>
+    <div class="code-block">
++--------------------------+-------------------------------------------------------+
+| VibeFlow Logo            | NAVBAR: Hamburger Toggle | Page Title | User Initials |
+| User Profile Initials    +-------------------------------------------------------+
+|                          | MAIN WORKSPACE CONTENT PANEL                          |
+| - Dashboard link         |                                                       |
+| - Profile Settings link  |  [Stats Cards: Total | Pending | Approved | Rejected] |
+| - Sign Out button        |                                                       |
+|                          |  [Search Input] [Category Filter] [Status Filter]     |
+|                          |                                                       |
+|                          |  [Requests Data Table Listing / Status Badges]        |
++--------------------------+-------------------------------------------------------+
+    </div>
+
+    <h3>Timeline Audit Log Interface</h3>
+    <div class="code-block">
+(*) Request Submitted -------> Logged on: July 9, 2026 at 12:30 PM
+ |                             (Timestamp recorded automatically)
+ |
+(*) Reviewed by Manager ----> Approved on: July 9, 2026 at 1:45 PM
+                               "Approved. Coordinate with finance to process."
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 9: DEMO & TEST ACCOUNTS -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>8. Demo Setup & Credentials</h2>
+    <p>To audit the live prototype, deploy the code to Vercel, complete the database setup, and use the demo credentials:</p>
+    
+    <h3>Environment Variables Required</h3>
+    <ul>
+      <li>`NEXT_PUBLIC_SUPABASE_URL`</li>
+      <li>`NEXT_PUBLIC_SUPABASE_ANON_KEY`</li>
+      <li>`SUPABASE_SERVICE_ROLE_KEY`</li>
+    </ul>
+
+    <h3>Pre-seeded Credentials</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User Role</th>
+          <th>Login Email Address</th>
+          <th>Account Password</th>
+          <th>Available Privileges</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Manager</strong></td>
+          <td>manager@test.com</td>
+          <td>Password123</td>
+          <td>Full approvals, dashboard statistics cards, CSV export, column sorting.</td>
+        </tr>
+        <tr>
+          <td><strong>Employee</strong></td>
+          <td>employee@test.com</td>
+          <td>Password123</td>
+          <td>Submit requests, upload attachments, edit/delete pending items, view timeline logs.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Note: You can skip typing credentials by clicking the <strong>"Quick Login"</strong> button panels on the landing page once the database has been seeded.</em></p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 10: CONCLUSION & ROADMAP -->
+  <!-- ========================================== -->
+  <div class="page">
+    <h2>9. Conclusion & Future Roadmap</h2>
+    <p>VibeFlow demonstrates a secure, high-performance, and responsive request approval prototype. With more development time, the following features would be added to the roadmap:</p>
+    
+    <h3>Multi-Stage Approval Workflows</h3>
+    <p>Enable sequential routing of request folders through multiple authorization tiers (e.g., Department Lead -> HR Manager -> CFO approval for high budgets).</p>
+    
+    <h3>Email Notifications</h3>
+    <p>Integrate Resend or SendGrid APIs to dispatch automated notification emails to employees as soon as their request status changes.</p>
+    
+    <h3>Visual Analytics & Charts</h3>
+    <p>Incorporate interactive bar charts and pie graphs (using libraries like Recharts) inside the Manager panel to show category distributions and SLA review time trends.</p>
+    
+    <h3>Automated SLA Alert Warnings</h3>
+    <p>Trigger automated warning notifications on the dashboard if a request remains in a "Pending" status for more than 48 hours without a decision.</p>
+  </div>
+
+</body>
+</html>

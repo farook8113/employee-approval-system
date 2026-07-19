@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/client'
 import { StatusBadge, PriorityBadge } from '@/components/ui/badge'
 import { ApprovalModal } from '@/components/approval-modal'
 import { RequestDetailsModal } from '@/components/request-details-modal'
+import { useToast } from '@/components/ui/toast'
 import { 
   Search, 
   Eye, 
@@ -27,6 +28,7 @@ interface ManagerDashboardClientProps {
 
 export function ManagerDashboardClient({ initialRequests }: ManagerDashboardClientProps) {
   const supabase = createClient()
+  const { toast } = useToast()
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -54,8 +56,27 @@ export function ManagerDashboardClient({ initialRequests }: ManagerDashboardClie
       .channel('requests-manager-changes')
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'requests' },
+        { event: 'INSERT', schema: 'public', table: 'requests' },
+        (payload: any) => {
+          toast(`New request submitted: "${payload.new.title}"`, 'info')
+          router.refresh()
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'requests' },
+        (payload: any) => {
+          if (payload.old && payload.old.status === 'Pending' && payload.new.status === 'Pending') {
+            toast(`Request details updated: "${payload.new.title}"`, 'info')
+          }
+          router.refresh()
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: 'DELETE', schema: 'public', table: 'requests' },
         () => {
+          toast(`A request was deleted from queue.`, 'warning')
           router.refresh()
         }
       )
@@ -64,7 +85,7 @@ export function ManagerDashboardClient({ initialRequests }: ManagerDashboardClie
     return () => {
       supabase.removeChannel(channel)
     }
-  }, [supabase, router])
+  }, [supabase, router, toast])
 
   // Sync URL search params
   useEffect(() => {

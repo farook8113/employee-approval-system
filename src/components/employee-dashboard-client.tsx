@@ -7,6 +7,7 @@ import { StatusBadge, PriorityBadge } from '@/components/ui/badge'
 import { RequestModal } from '@/components/request-modal'
 import { DeleteModal } from '@/components/delete-modal'
 import { RequestDetailsModal } from '@/components/request-details-modal'
+import { useToast } from '@/components/ui/toast'
 import { 
   Plus, 
   Search, 
@@ -26,6 +27,7 @@ interface EmployeeDashboardClientProps {
 
 export function EmployeeDashboardClient({ initialRequests, userId }: EmployeeDashboardClientProps) {
   const supabase = createClient()
+  const { toast } = useToast()
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -52,7 +54,27 @@ export function EmployeeDashboardClient({ initialRequests, userId }: EmployeeDas
       .channel('requests-employee-changes')
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'requests' },
+        { event: 'UPDATE', schema: 'public', table: 'requests', filter: `employee_id=eq.${userId}` },
+        (payload: any) => {
+          if (payload.old && payload.old.status !== payload.new.status) {
+            toast(
+              `Request "${payload.new.title}" was ${payload.new.status.toLowerCase()}!`,
+              payload.new.status === 'Approved' ? 'success' : 'error'
+            )
+          }
+          router.refresh()
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: 'DELETE', schema: 'public', table: 'requests', filter: `employee_id=eq.${userId}` },
+        () => {
+          router.refresh()
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'requests', filter: `employee_id=eq.${userId}` },
         () => {
           router.refresh()
         }
@@ -62,7 +84,7 @@ export function EmployeeDashboardClient({ initialRequests, userId }: EmployeeDas
     return () => {
       supabase.removeChannel(channel)
     }
-  }, [supabase, router])
+  }, [supabase, router, userId, toast])
 
   // Synchronize filter selections with URL parameters for Next.js App Router
   useEffect(() => {
